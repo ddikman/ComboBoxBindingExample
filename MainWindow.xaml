@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:ComboBoxBindingExample.ViewModel"
+        xmlns:comboBoxBindingExample="clr-namespace:ComboBoxBindingExample"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="MainWindow" Height="350" Width="525">
@@ -22,18 +23,19 @@
         </Grid.RowDefinitions>
 
         <UniformGrid Grid.Row="0" Columns="3">
-            <ComboBox  Margin="5"
-                       IsEditable="True"
-                       ItemsSource="{Binding Items}"
-                       SelectedValuePath="Name"
-                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />
+            <comboBoxBindingExample:BindableComboBox  
+                Margin="5"
+                IsEditable="True"
+                ItemsSource="{Binding Items}"
+                SelectedValuePath="Name"
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />
             
             <TextBox Margin="5" Text="{Binding SelectedItem.Name, Mode=TwoWay}" />
             <TextBox Margin="5" Text="{Binding SelectedItem.Value, Mode=TwoWay}" />
         </UniformGrid>
         
         <ListBox Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Margin="5" />
-        
+
         <Button Grid.Row="2" Padding="5" HorizontalAlignment="Right" Margin="5" Command="{Binding AddCommand}">Add new</Button>
         
     </Grid>
